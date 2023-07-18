@@ -11,25 +11,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
-const val HomeScreenRoute = "HomeScreen"
+const val ProfileScreenRoute = "profile"
 
 @Composable
-fun HomeScreen(onButtonClick: (Int) -> Unit, modifier: Modifier = Modifier) {
+fun ProfileScreen(
+    onProfileEditClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Home screen")
+        Text(text = "Profile screen")
 
-        Button(onClick = { onButtonClick(17) }) {
-            Text(text = "Go to details screen")
+        Button(onClick = onProfileEditClick) {
+            Text(text = "Edit profile")
         }
     }
 }
 
 @Preview
 @Composable
-private fun HomeScreenPreview() = ComposeNavigationTheme {
-    HomeScreen(onButtonClick = { /* no-op */ })
+private fun ProfileScreenPreview() = ComposeNavigationTheme {
+    ProfileScreen(onProfileEditClick = { /* no-op */ })
 }

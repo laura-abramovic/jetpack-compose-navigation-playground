@@ -17,6 +17,7 @@ import com.example.composenavigation.ui.screen.HomeScreenRoute
 import com.example.composenavigation.ui.screen.KeyID
 import com.example.composenavigation.ui.screen.KeyOwnerId
 import com.example.composenavigation.ui.screen.KeyPetSpecies
+import com.example.composenavigation.ui.screen.MainScreen
 import com.example.composenavigation.ui.screen.PetsScreen
 import com.example.composenavigation.ui.screen.PetsScreenRoute
 import com.example.composenavigation.ui.screen.detailsScreenRoute
@@ -30,45 +31,8 @@ class MainActivity : ComponentActivity() {
             ComposeNavigationTheme {
 
                 val navController = rememberNavController()
-                val navState = navController.currentBackStackEntryAsState()
 
-                NavHost(navController = navController, startDestination = HomeScreenRoute) {
-                    composable(HomeScreenRoute) {
-                        HomeScreen(onButtonClick = { id ->
-                            navController.navigate(detailsScreenRoute(id))
-                        })
-                    }
-
-                    composable(
-                        route = DetailsScreenRoute,
-                        arguments = listOf(navArgument(KeyID) { type = NavType.IntType })
-                    ) {
-                        DetailsScreen(
-                            id = it.arguments?.getInt(KeyID)
-                                ?: throw IllegalStateException("Details screen must have an argument"),
-                            onBackClick = { navController.popBackStack() })
-                    }
-
-                    composable(
-                        route = PetsScreenRoute,
-                        arguments = listOf(
-                            navArgument(KeyOwnerId) { nullable = true },
-                            navArgument(KeyPetSpecies) {
-                                type = NavType.IntType
-                                nullable = true
-                            }
-                        )
-                    ) { backStackEntry ->
-                        PetsScreen(
-                            pets = emptyList(),
-                            ownerId = backStackEntry.arguments?.getString(KeyOwnerId),
-                            petSpecies = backStackEntry.arguments?.getInt(KeyPetSpecies)?.let {
-                                PetSpecies.values()[it]
-                            }
-                        )
-                    }
-                }
-
+                MainScreen(navController = navController)
             }
         }
     }
