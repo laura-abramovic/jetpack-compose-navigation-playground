@@ -1,4 +1,4 @@
-package com.example.composenavigation.ui.screen
+package com.example.composenavigation.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,8 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
-
-const val HomeScreenRoute = "HomeScreen"
 
 @Composable
 fun HomeScreen(onButtonClick: (Int) -> Unit, modifier: Modifier = Modifier) {

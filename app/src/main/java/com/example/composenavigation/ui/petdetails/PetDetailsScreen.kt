@@ -1,4 +1,4 @@
-package com.example.composenavigation.ui.screen
+package com.example.composenavigation.ui.petdetails
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,13 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
-const val KeyID = "id"
-const val DetailsScreenRoute = "DetailsScreen/{$KeyID}"
-
-fun detailsScreenRoute(id: Int) = "DetailsScreen/$id"
-
 @Composable
-fun DetailsScreen(
+fun PetDetailsScreen(
     id: Int,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -50,8 +45,8 @@ fun DetailsScreen(
 
 @Preview
 @Composable
-private fun DetailsScreenPreview() = ComposeNavigationTheme {
-    DetailsScreen(
+private fun PetDetailsScreenPreview() = ComposeNavigationTheme {
+    PetDetailsScreen(
         id = 0,
         onBackClick = { /* no-op */ }
     )
