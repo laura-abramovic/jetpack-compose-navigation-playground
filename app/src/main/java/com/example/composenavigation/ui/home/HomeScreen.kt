@@ -9,10 +9,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.composenavigation.model.Pet
+import com.example.composenavigation.model.PetSpecies
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
 @Composable
-fun HomeScreen(onButtonClick: (Int) -> Unit, modifier: Modifier = Modifier) {
+fun HomeScreen(
+    onPetListClick: (String?, PetSpecies?) -> Unit,
+    onPetCardClick: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -20,8 +26,12 @@ fun HomeScreen(onButtonClick: (Int) -> Unit, modifier: Modifier = Modifier) {
     ) {
         Text("Home screen")
 
-        Button(onClick = { onButtonClick(17) }) {
-            Text(text = "Go to details screen")
+        Button(onClick = { onPetListClick("owner Id", PetSpecies.CAT) }) {
+            Text(text = "Go to pets list screen")
+        }
+
+        Button(onClick = { onPetCardClick(17) }) {
+            Text(text = "Go to pets details screen")
         }
     }
 }
@@ -29,5 +39,8 @@ fun HomeScreen(onButtonClick: (Int) -> Unit, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun HomeScreenPreview() = ComposeNavigationTheme {
-    HomeScreen(onButtonClick = { /* no-op */ })
+    HomeScreen(
+        onPetListClick = { _, _ -> /* no-op */ },
+        onPetCardClick = { /* no-op */ }
+    )
 }

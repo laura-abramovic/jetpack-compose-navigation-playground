@@ -25,7 +25,7 @@ fun NavController.navigateToPetsScreen(ownerId: String? = null, petSpecies: PetS
     navigate("$PetsNavigationBaseRoute$queryParams")
 }
 
-fun NavGraphBuilder.petsScreen() {
+fun NavGraphBuilder.petsScreen(onPetCardClick: (Int) -> Unit) {
     composable(
         route = "$PetsNavigationBaseRoute?$KeyOwnerId={$KeyOwnerId}&$KeyPetSpecies={$KeyPetSpecies}",
         arguments = listOf(
@@ -41,6 +41,7 @@ fun NavGraphBuilder.petsScreen() {
     ) { backStackEntry ->
         PetsScreen(
             pets = emptyList(),
+            onPetCardClick = onPetCardClick,
             ownerId = backStackEntry.arguments?.getString(KeyOwnerId),
             petSpecies = backStackEntry.arguments?.getInt(KeyPetSpecies)?.let {
                 if (it != PetSpeciesDefaultOrdinal) PetSpecies.values()[it] else null
