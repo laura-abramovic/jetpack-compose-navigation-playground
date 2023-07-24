@@ -14,7 +14,7 @@ fun NavController.navigateToPetDetails(id: Int, navOptions: NavOptions? = null) 
     this.navigate("$PetDetailsNavigationBaseRoute/$id", navOptions)
 }
 
-fun NavGraphBuilder.petDetailsScreen(onBackClick: () -> Unit) {
+fun NavGraphBuilder.petDetailsScreen(onBackClick: () -> Unit, onGoHomeClick: () -> Unit) {
     composable(
         route = "$PetDetailsNavigationBaseRoute/{$PetId}",
         arguments = listOf(navArgument(PetId) { type = NavType.IntType })
@@ -22,7 +22,8 @@ fun NavGraphBuilder.petDetailsScreen(onBackClick: () -> Unit) {
         PetDetailsScreen(
             id = it.arguments?.getInt(PetId)
                 ?: throw IllegalStateException("Details screen must have an argument"),
-            onBackClick = onBackClick
+            onBackClick = onBackClick,
+            onGoHomeClick = onGoHomeClick
         )
     }
 }

@@ -22,7 +22,10 @@ fun NavGraphBuilder.homeNavGraph(navController: NavHostController) {
             onPetCardClick = { id -> navController.navigateToPetDetails(id) }
         )
 
-        petDetailsScreen(onBackClick = { navController.popBackStack() })
+        petDetailsScreen(
+            onBackClick = { navController.popBackStack() },
+            onGoHomeClick = { navController.popBackStack(route = HomeNavigationRoute, inclusive = false) }
+        )
 
         petsScreen(onPetCardClick = { id -> navController.navigateToPetDetails(id) })
     }

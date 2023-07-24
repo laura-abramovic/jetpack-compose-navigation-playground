@@ -39,6 +39,7 @@ fun BottomNavigationBar(navController: NavController) {
                             popUpTo(route)
                         }
 
+
                         launchSingleTop = true
                         restoreState = true
                     }

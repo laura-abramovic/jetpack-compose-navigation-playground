@@ -1,8 +1,10 @@
 package com.example.composenavigation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.composenavigation.ui.screen.MainScreen
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme

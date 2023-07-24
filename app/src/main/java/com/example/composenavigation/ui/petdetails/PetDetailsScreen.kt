@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 fun PetDetailsScreen(
     id: Int,
     onBackClick: () -> Unit,
+    onGoHomeClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -30,6 +32,13 @@ fun PetDetailsScreen(
     ) {
         IconButton(onClick = onBackClick) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Go back")
+        }
+
+        Button(
+            onClick = onGoHomeClick,
+            modifier = Modifier.align(Alignment.TopEnd)
+        ) {
+            Text(text = "Go home")
         }
 
         Column(
@@ -48,6 +57,7 @@ fun PetDetailsScreen(
 private fun PetDetailsScreenPreview() = ComposeNavigationTheme {
     PetDetailsScreen(
         id = 0,
-        onBackClick = { /* no-op */ }
+        onBackClick = { /* no-op */ },
+        onGoHomeClick = { /* no-op */ }
     )
 }
