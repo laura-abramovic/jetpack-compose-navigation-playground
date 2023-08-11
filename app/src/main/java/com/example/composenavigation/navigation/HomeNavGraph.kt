@@ -9,6 +9,7 @@ import com.example.composenavigation.ui.petdetails.navigateToPetDetails
 import com.example.composenavigation.ui.petdetails.petDetailsScreen
 import com.example.composenavigation.ui.pets.navigateToPetsScreen
 import com.example.composenavigation.ui.pets.petsScreen
+import com.example.composenavigation.ui.profileedit.navigateToProfileEdit
 
 const val HomeNavGraphRoute = "home_nav_graph"
 
