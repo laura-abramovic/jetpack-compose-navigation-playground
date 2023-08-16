@@ -23,7 +23,7 @@ fun ScreenB() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(LightGray2),
+            .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
