@@ -1,5 +1,6 @@
 package com.example.composenavigation.ui.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.size
@@ -11,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.composenavigation.navigation.demo.DemoBottomNavigationItem
 import com.example.composenavigation.ui.theme.DarkGray
@@ -18,10 +20,12 @@ import com.example.composenavigation.ui.theme.LightGray2
 
 @Composable
 fun DemoBottomNavigationBar(navController: NavController) {
-    val items = listOf(DemoBottomNavigationItem.Greetings, DemoBottomNavigationItem.Profile)
+    val items = listOf(DemoBottomNavigationItem.Greetings, DemoBottomNavigationItem.Profile, DemoBottomNavigationItem.Call)
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    Log.d("mojjj", "current nav back stack: ${navBackStackEntry?.destination?.route}")
 
     BottomNavigation(
         backgroundColor = DarkGray,
@@ -35,13 +39,25 @@ fun DemoBottomNavigationBar(navController: NavController) {
                 icon = {
                     Icon(
                         imageVector = item.icon,
-                        contentDescription = item.label,
+                        contentDescription = null,
                         modifier = Modifier.size(32.dp)
                     )
                 },
                 selected = item.route == currentRoute,
                 onClick = {
-//                    navController.navigate(item.route) {
+                    navController.navigate(item.route) {
+                        popUpTo(navController.graph.findStartDestination().id)
+
+                        launchSingleTop = true
+                    }
+                }
+            )
+        }
+    }
+
+}
+
+//                    {
 //                        popUpTo(navController.graph.findStartDestination().id) {
 //                            saveState = true
 //                        }
@@ -49,8 +65,3 @@ fun DemoBottomNavigationBar(navController: NavController) {
 //                        launchSingleTop = true
 //                        restoreState = true
 //                    }
-                }
-            )
-        }
-    }
-}

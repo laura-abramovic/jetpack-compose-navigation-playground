@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
@@ -11,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.composenavigation.ui.greetings.DemoProfileScreen
 import com.example.composenavigation.ui.greetings.GreetingsScreen
 import com.example.composenavigation.ui.greetings.StartScreen
 
@@ -47,6 +49,14 @@ fun DemoScreen() {
                     onBackClick = { navController.popBackStack() },
                     name = backStackEntry.arguments?.getString("name") ?: ""
                 )
+            }
+
+            composable("profile_screen_route") {
+                DemoProfileScreen()
+            }
+
+            composable("call_screen_route") {
+                Text("CALL SCREEN")
             }
         }
     }

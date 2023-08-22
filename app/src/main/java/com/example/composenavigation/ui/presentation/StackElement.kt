@@ -39,11 +39,13 @@ fun StackElement(name: String) {
 @Preview
 @Composable
 private fun StackElementAPreview() = ComposeNavigationTheme {
-    StackElement(name = "Screen A")
+//    StackElement(name = "Screen A")
+    StackElement(name = "Greetings")
 }
 
 @Preview
 @Composable
 private fun StackElementBPreview() = ComposeNavigationTheme {
-    StackElement(name = "Screen B")
+//    StackElement(name = "Screen B")
+    StackElement(name = "Profile")
 }
