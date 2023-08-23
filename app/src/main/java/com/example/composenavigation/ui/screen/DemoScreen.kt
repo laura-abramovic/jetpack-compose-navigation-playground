@@ -7,6 +7,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDeepLink
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -39,11 +40,10 @@ fun DemoScreen() {
 
             composable(
                 route = "greetings_screen_route/{name}",
-                arguments = listOf(navArgument("name") {
-                    type = NavType.StringType
-                    nullable = true
-                    defaultValue = "user"
-                })
+                arguments = listOf(navArgument("name") {}),
+                deepLinks = listOf(
+                    NavDeepLink("scheme://host/greetings/{name}")
+                )
             ) { backStackEntry ->
                 GreetingsScreen(
                     onBackClick = { navController.popBackStack() },

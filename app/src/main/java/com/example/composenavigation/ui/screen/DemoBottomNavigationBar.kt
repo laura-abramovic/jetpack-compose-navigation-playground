@@ -1,6 +1,5 @@
 package com.example.composenavigation.ui.screen
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.size
@@ -20,12 +19,10 @@ import com.example.composenavigation.ui.theme.LightGray2
 
 @Composable
 fun DemoBottomNavigationBar(navController: NavController) {
-    val items = listOf(DemoBottomNavigationItem.Greetings, DemoBottomNavigationItem.Profile, DemoBottomNavigationItem.Call)
+    val items = listOf(DemoBottomNavigationItem.Greetings, DemoBottomNavigationItem.Profile)
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-
-    Log.d("mojjj", "current nav back stack: ${navBackStackEntry?.destination?.route}")
 
     BottomNavigation(
         backgroundColor = DarkGray,
