@@ -43,22 +43,15 @@ fun DemoBottomNavigationBar(navController: NavController) {
                 selected = item.route == currentRoute,
                 onClick = {
                     navController.navigate(item.route) {
-                        popUpTo(navController.graph.findStartDestination().id)
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
 
+                        restoreState = true
                         launchSingleTop = true
                     }
                 }
             )
         }
     }
-
 }
-
-//                    {
-//                        popUpTo(navController.graph.findStartDestination().id) {
-//                            saveState = true
-//                        }
-//
-//                        launchSingleTop = true
-//                        restoreState = true
-//                    }
