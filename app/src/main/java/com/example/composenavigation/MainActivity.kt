@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.example.composenavigation.ui.screen.DemoScreen
+import com.example.composenavigation.ui.screen.MainScreen
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposeNavigationTheme {
-                DemoScreen()
+                MainScreen()
             }
         }
     }
