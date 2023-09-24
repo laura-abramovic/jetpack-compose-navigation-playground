@@ -15,9 +15,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposeNavigationTheme {
-
-//                MainScreen(navController = navController)
-
                 DemoScreen()
             }
         }

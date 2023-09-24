@@ -6,8 +6,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.composenavigation.navigation.demo.profileNavGraph
-import com.example.composenavigation.navigation.demo.startNavGraph
+import com.example.composenavigation.navigation.profileNavGraph
+import com.example.composenavigation.navigation.startNavGraph
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -17,7 +17,7 @@ fun DemoScreen() {
 
     Scaffold(
         bottomBar = {
-            DemoBottomNavigationBar(navController = navController)
+            BottomNavigationBar(navController = navController)
         },
     ) {
         NavHost(
@@ -25,7 +25,6 @@ fun DemoScreen() {
             startDestination = "greetings_graph"
         ) {
             startNavGraph(navController)
-
             profileNavGraph(navController)
         }
     }

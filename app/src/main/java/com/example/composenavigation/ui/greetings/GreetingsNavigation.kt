@@ -1,4 +1,4 @@
-package com.example.composenavigation.navigation.demo
+package com.example.composenavigation.ui.greetings
 
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLink
@@ -7,23 +7,25 @@ import androidx.navigation.NavOptions
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.composenavigation.ui.greetings.GreetingsScreen
 
-fun NavGraphBuilder.greetingsDestination(onBackClick: () -> Unit) {
+private const val GreetingScreenBaseRoute = "greetings_screen_route"
+private const val ParameterName = "name"
+
+fun NavGraphBuilder.addGreetingsScreen(onBackClick: () -> Unit) {
     composable(
-        route = "greetings_screen_route/{name}",
-        arguments = listOf(navArgument("name") { type = NavType.StringType }),
+        route = "$GreetingScreenBaseRoute/{$ParameterName}",
+        arguments = listOf(navArgument(ParameterName) { type = NavType.StringType }),
         deepLinks = listOf(
             NavDeepLink("scheme://host/greetings/{name}")
         )
     ) { backStackEntry ->
         GreetingsScreen(
             onBackClick = onBackClick,
-            name = backStackEntry.arguments?.getString("name") ?: ""
+            name = backStackEntry.arguments?.getString(ParameterName).orEmpty()
         )
     }
 }
 
 fun NavController.navigateToGreetingsScreen(name: String, navOptions: NavOptions? = null) {
-    navigate("greetings_screen_route/$name", navOptions)
+    navigate("$GreetingScreenBaseRoute/$name", navOptions)
 }

@@ -32,5 +32,8 @@ fun PrimaryButton(
 @Preview
 @Composable
 private fun PrimaryButtonPreview() = ComposeNavigationTheme {
-    PrimaryButton(text = "Click me", onClick = { /* no-op */ })
+    PrimaryButton(
+        text = "Click me",
+        onClick = { /* no-op */ }
+    )
 }
