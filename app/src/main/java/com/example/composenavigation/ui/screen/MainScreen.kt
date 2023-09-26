@@ -10,8 +10,8 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.composenavigation.model.BottomNavigationItemState
 import com.example.composenavigation.model.BottomNavigationItem
+import com.example.composenavigation.model.BottomNavigationItemState
 import com.example.composenavigation.navigation.profileNavGraph
 import com.example.composenavigation.navigation.startNavGraph
 import com.example.composenavigation.ui.components.BottomNavigationBar
